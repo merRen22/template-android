@@ -1,8 +1,7 @@
 plugins {
-  id("com.android.application")
+  id("com.android.library")
   kotlin("android")
   kotlin("kapt")
-  id("androidx.navigation.safeargs.kotlin")
   id("dagger.hilt.android.plugin")
 }
 
@@ -13,7 +12,6 @@ apply {
 android {
   compileSdkVersion(AppConfig.compileSdkVersion)
   defaultConfig {
-    applicationId = AppConfig.packageName
     minSdkVersion(AppConfig.minSdkVersion)
     targetSdkVersion(AppConfig.targetSdkVersion)
     versionCode = AppConfig.versionCode
@@ -42,8 +40,6 @@ android {
   }
   kotlinOptions {
     jvmTarget = "1.8"
-    // TODO evaluate usage
-    //freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
   }
   buildFeatures {
     compose = true
@@ -52,27 +48,11 @@ android {
     kotlinCompilerVersion = Versions.Project.kotlin_version
     kotlinCompilerExtensionVersion = Versions.Dependencies.Compose
   }
-  packagingOptions {
-    exclude("META-INF/*")
-  }
-  //dynamicFeatures = [':dynamic:sample']
 }
 
 dependencies {
 
-  implementation(Dependencies.Compose.composeActivity)
-  implementation(Dependencies.Accompanist.insets)
-
-  // libs
   implementShared()
   implementCompose()
-  implementTest()
-  implementAndroidTest()
 
-  // module
-  implementation(project(":base"))
-  implementation(project(":baseUI"))
-  //implementation(project(":feature:feed"))
-  //implementation(project(":feature:search"))
-  //implementation(project(":feature:pin"))
 }

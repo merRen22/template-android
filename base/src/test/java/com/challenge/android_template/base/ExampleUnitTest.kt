@@ -1,4 +1,4 @@
-package com.challenge.android_template
+package com.challenge.android_template.base
 
 import org.junit.Test
 

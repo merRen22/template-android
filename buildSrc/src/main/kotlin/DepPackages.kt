@@ -2,7 +2,7 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.implementShared() {
     // desugar
-    add("implementation", Dependencies.DeSugar.DeSugar)
+    add("coreLibraryDesugaring", Dependencies.DeSugar.DeSugar)
     // kotlin
     add("implementation", Dependencies.Kotlin.kotlin)
     // coroutine
