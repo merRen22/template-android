@@ -13,8 +13,14 @@ This project is a template for an android project that used the following librar
 - Multi Module App
 - Mockito
 - Compose
+- Room
+- KotlinDsl
 
 It is also configured to work with compose and dynamic modules
+
+## Refactoring
+
+In order to change the versions and dependecies access the buildSrc module. It contains everything related to versions and packages names
 
 ## Modules
 
@@ -41,3 +47,9 @@ gradlew :app:packageDebugUniversalApk
 //Mac/linux
 ./gradlew :app:packageDebugUniversalApk
 ```
+
+## Sources
+
+- [Jet Hub](https://github.com/TakuSemba/JetHub) for module and di management
+- [kmm template](https://github.com/jittya/KMMT) for buildSrc handling
+- [libraries](https://proandroiddev.com/avoid-repetitive-dependency-declarations-with-gradle-kotlin-dsl-97c904704727) for sharing dependencies between modules
