@@ -12,10 +12,11 @@ abstract class FooDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   abstract suspend fun insert(repositoryEntity: FooEntity)
 
+  @Query("SELECT * FROM foo")
+  abstract suspend fun getAll(): List<FooEntity>
+
   // TODO add more operations if needed
   /*
-  @Query("SELECT * FROM foo")
-  abstract suspend fun getAll(): List<RepositoryEntity>
 
   @Delete
   abstract suspend fun delete(repositoryEntity: RepositoryEntity)

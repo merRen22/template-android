@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.challenge.android_template.base.ErrorHandler
+import com.challenge.android_template.model.Foo
+import com.challenge.android_template.repository.FooRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -12,15 +14,12 @@ import javax.inject.Inject
 /**
  * [ViewModel] to store and manage user-related data.
  * This should be Activity-Scope, because the data is used across screens.
+ * For this sample we request all Foos collected by the user
  */
-
-class UserViewModel{
-
-}
-/*
 @HiltViewModel
 class UserViewModel @Inject constructor(
   // add necessary repositories from data module,
+  private val fooRepository: FooRepository,
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
@@ -32,8 +31,10 @@ class UserViewModel @Inject constructor(
     viewModelScope.launch {
       runCatching {
         // find some internal data DB or API
-      }.onSuccess { repos ->
+        fooRepository.getLocalFoos()
+      }.onSuccess { foos ->
         // do stuff with a live data
+        mutableFooRepositories.value = foos
       }.onFailure { error ->
         errorHandler.handleError(error)
       }
@@ -41,5 +42,3 @@ class UserViewModel @Inject constructor(
   }
 
 }
-
- */

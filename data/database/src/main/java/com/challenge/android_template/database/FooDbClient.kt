@@ -16,4 +16,10 @@ class FooDbClient(private val fooDao: FooDao) : FooDb {
       fooDao.insert(FooEntity.fromModel(foo))
     }
   }
+
+  override suspend fun getLocalFoos(): List<Foo> {
+    return withContext(IO) {
+      fooDao.getAll().map { entity -> entity.toModel() }
+    }
+  }
 }

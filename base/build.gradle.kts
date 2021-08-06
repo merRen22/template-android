@@ -49,7 +49,7 @@ dependencies {
   implementShared()
 
   // module
-  //api(project(':data:repository'))
+  api(project(":data:repository"))
 
   // design/core
   api(Dependencies.Androidx.AppCompat)

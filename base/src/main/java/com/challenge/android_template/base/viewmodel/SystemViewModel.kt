@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+/**
+ * Generic [ViewModel] use to interact with global settings for the app
+ */
 @HiltViewModel
 class SystemViewModel @Inject constructor() : ViewModel() {
 

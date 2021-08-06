@@ -12,13 +12,13 @@ interface FooDb {
    */
   suspend fun insert(foo: Foo)
 
+  /**
+   * Generic function to get a json from local Db
+   */
+  suspend fun getLocalFoos(): List<Foo>
+
   // TODO add operations as needed
   /*
-    /**
-   * get all [Foo]
-   */
-  suspend fun getAll(): List<Foo>
-
     /**
    * delete [Foo]
    */

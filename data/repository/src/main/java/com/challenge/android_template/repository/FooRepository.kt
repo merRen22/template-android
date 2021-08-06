@@ -24,5 +24,10 @@ class FooRepository(
   /**
    * Generic method to interact with an API
    */
+  suspend fun getLocalFoos() = fooDb.getLocalFoos()
+
+  /**
+   * Generic method to interact with an API
+   */
   suspend fun getAllFoos() = fooApi.getAllFoos()
 }
