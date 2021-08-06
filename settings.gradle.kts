@@ -1,3 +1,7 @@
 include(":app")
 include(":base")
 include(":baseUI")
+include(":model")
+include(":data:api")
+include(":data:repository")
+include(":data:database")

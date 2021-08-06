@@ -13,7 +13,7 @@ object Versions {
      */
     object Dependencies {
         const val Navigation_Plugin_version = "2.3.3"
-        const val Dagger_Hilt = "2.33-beta"
+        const val Dagger_Hilt = "2.38.1"
         const val Coroutine = "1.4.2"
         const val Compose = "1.0.1"
         const val Lifecycle = "2.2.0"
