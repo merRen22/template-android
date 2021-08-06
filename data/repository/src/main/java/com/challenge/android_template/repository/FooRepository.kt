@@ -3,13 +3,14 @@ package com.challenge.android_template.repository
 import com.challenge.android_template.api.FooApi
 import com.challenge.android_template.database.FooDb
 import com.challenge.android_template.model.Foo
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
  * Repository for [Foo]
  */
 @Singleton
-class FooRepository(
+class FooRepository @Inject constructor(
   private val fooApi: FooApi,
   private val fooDb: FooDb
 ) {
