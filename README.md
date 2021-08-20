@@ -69,7 +69,7 @@ List of issue related to version of dependecies and limitations
 
 ## Licence
 ```
-Copyright 2017 Taku Semba.
+Copyright 2021 Renato Mercado.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
