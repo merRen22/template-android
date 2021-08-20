@@ -65,11 +65,4 @@ dependencies {
   kapt(Dependencies.Lifecycle.lifecycleCompiler)
   api(Dependencies.Lifecycle.viewmodelKtx)
   api(Dependencies.Lifecycle.livedataKtx)
-
-  // navigation
-  api(Dependencies.Navigation.navCommonKtx)
-  api(Dependencies.Navigation.navRuntimeKtx)
-  api(Dependencies.Navigation.navFragmentKtx)
-  api(Dependencies.Navigation.navUiKtx)
-  api(Dependencies.Navigation.navDfm)
 }

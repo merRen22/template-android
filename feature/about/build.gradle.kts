@@ -1,43 +1,65 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+  id("com.android.library")
+  kotlin("android")
+  kotlin("kapt")
+  id("dagger.hilt.android.plugin")
+}
+
+apply {
+  from("$rootDir/ktlint.gradle.kts")
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+  compileSdkVersion(AppConfig.compileSdkVersion)
+  defaultConfig {
+    minSdkVersion(AppConfig.minSdkVersion)
+    targetSdkVersion(AppConfig.targetSdkVersion)
+    versionCode = AppConfig.versionCode
+    versionName = AppConfig.versionName
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    getByName("release") {
+      isMinifyEnabled = false
+      isDebuggable = false
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
+    }
+    getByName("debug") {
+      isDebuggable = true
+    }
+  }
+  compileOptions {
+    // Flag to enable support for the new language APIs 👇
+    // https://developer.android.com/studio/write/java8-support
+    isCoreLibraryDesugaringEnabled = true
 
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+  }
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+  buildFeatures {
+    compose = true
+  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = Versions.Dependencies.Compose
+  }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+  // libs
+  implementShared()
+  implementCompose()
+
+  // module
+  implementation(project(":base"))
+  implementation(project(":baseUI"))
 }

@@ -2,7 +2,6 @@ plugins {
   id("com.android.application")
   kotlin("android")
   kotlin("kapt")
-  id("androidx.navigation.safeargs.kotlin")
   id("dagger.hilt.android.plugin")
 }
 
@@ -40,16 +39,21 @@ android {
     // https://developer.android.com/studio/write/java8-support
     isCoreLibraryDesugaringEnabled = true
   }
+
+  val commonCompilerArgs = listOfNotNull(
+    "-Xallow-jvm-ir-dependencies",
+    "-Xskip-prerelease-check"
+  )
+
   kotlinOptions {
     jvmTarget = "1.8"
     // TODO evaluate usage
-    //freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
+    freeCompilerArgs = commonCompilerArgs
   }
   buildFeatures {
     compose = true
   }
   composeOptions {
-    kotlinCompilerVersion = Versions.Project.kotlin_version
     kotlinCompilerExtensionVersion = Versions.Dependencies.Compose
   }
   packagingOptions {
@@ -72,7 +76,7 @@ dependencies {
   // module
   implementation(project(":base"))
   implementation(project(":baseUI"))
-  //implementation(project(":feature:feed"))
+  implementation(project(":feature:about"))
   //implementation(project(":feature:search"))
   //implementation(project(":feature:pin"))
 }

@@ -48,6 +48,12 @@ gradlew :app:packageDebugUniversalApk
 ./gradlew :app:packageDebugUniversalApk
 ```
 
+## 🚨 Dependency Issues
+
+List of issue related to version of dependecies and limitations
+
+- Compose navigation dont not allow to use dynamic modules natively- Google issue [here](https://issuetracker.google.com/issues/183677219)
+
 ## Sources
 
 - [Jet Hub](https://github.com/TakuSemba/JetHub) for module and di management

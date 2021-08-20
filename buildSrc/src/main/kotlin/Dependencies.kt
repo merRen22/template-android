@@ -52,16 +52,8 @@ class Dependencies {
 
 
   object Navigation {
-    const val navCommonKtx =
-      "androidx.navigation:navigation-common-ktx:${Versions.Dependencies.Navigation}"
-    const val navRuntimeKtx =
-      "androidx.navigation:navigation-runtime-ktx:${Versions.Dependencies.Navigation}"
-    const val navFragmentKtx =
-      "androidx.navigation:navigation-fragment-ktx:${Versions.Dependencies.Navigation}"
-    const val navUiKtx =
-      "androidx.navigation:navigation-ui-ktx:${Versions.Dependencies.Navigation}"
-    const val navDfm =
-      "androidx.navigation:navigation-dynamic-features-fragment:${Versions.Dependencies.Navigation}"
+    const val navCompose =
+      "com.google.accompanist:accompanist-navigation-animation:${Versions.Dependencies.Navigation}"
   }
 
 

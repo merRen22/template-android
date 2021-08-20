@@ -55,4 +55,7 @@ dependencies {
   implementShared()
   implementCompose()
 
+  // navigation
+  api(Dependencies.Navigation.navCompose)
+
 }

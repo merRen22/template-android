@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about_description">TemplateApp This is a simple template for an android application include many interesting libraries</string>
+
+    <string name="back_arrow_content_description">Back</string>
+
+    <string name="about_button_project">Visit project on GitHub</string>
+    <string name="about_cd_github" translatable="false">GitHub</string>
 </resources>

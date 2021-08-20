@@ -9,7 +9,6 @@ buildscript {
         classpath(Plugins.pluginSafeArgs)
         classpath(Plugins.pluginDaggerHilt)
         classpath(Plugins.pluginKotlinSerialization)
-      classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
     }
 }
 
