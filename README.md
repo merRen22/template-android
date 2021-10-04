@@ -20,7 +20,7 @@ It is also configured to work with compose and dynamic modules
 
 ## Refactoring
 
-In order to change the versions and dependecies access the buildSrc module. It contains everything related to versions and packages names
+In order to change the versions and dependencies access the buildSrc module. It contains everything related to versions and packages names
 
 ## Modules
 
