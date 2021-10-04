@@ -83,3 +83,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+## Stuff to do 👨‍🏭
+
+- add a widget that shows a different quote each day to the the user making use of the new API for android 12 also this needs to use the preview view for widgets and the device template
+- also widgets can interact with audio should I added ?
+- customize splash screen show by android
+
+
