@@ -66,6 +66,7 @@ dependencies {
 
   implementation(Dependencies.Compose.composeActivity)
   implementation(Dependencies.Accompanist.insets)
+  implementation(Dependencies.Androidx.SplashScreen)
 
   // libs
   implementShared()

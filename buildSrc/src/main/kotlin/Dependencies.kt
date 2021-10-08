@@ -1,3 +1,5 @@
+import java.awt.SplashScreen
+
 class Dependencies {
 
   object DeSugar {
@@ -28,6 +30,7 @@ class Dependencies {
     const val CoreKtx = "androidx.core:core-ktx:1.5.0-alpha01"
     const val ActivityKtx = "androidx.activity:activity-ktx:1.2.0-alpha06"
     const val FragmentKtx = "androidx.fragment:fragment-ktx:1.3.0-alpha06"
+    const val SplashScreen = "androidx.core:core-splashscreen:1.0.0-alpha02"
   }
 
   object Accompanist {
