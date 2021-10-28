@@ -10,11 +10,11 @@ apply {
 }
 
 android {
-  compileSdkVersion(AppConfig.compileSdkVersion)
+  compileSdk = AppConfig.compileSdkVersion
   defaultConfig {
     applicationId = AppConfig.packageName
-    minSdkVersion(AppConfig.minSdkVersion)
-    targetSdkVersion(AppConfig.targetSdkVersion)
+    minSdk = AppConfig.minSdkVersion
+    targetSdk = AppConfig.targetSdkVersion
     versionCode = AppConfig.versionCode
     versionName = AppConfig.versionName
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

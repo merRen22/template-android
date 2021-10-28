@@ -11,7 +11,8 @@
       android:translateY="8.230297">
     <group android:translateY="135.49219">
       <path android:pathData="M22,-62L22,-18.359375Q22,-11,27.78125,-11Q29.90625,-11,33,-12L33,-0.53125Q28.65625,1,22.71875,1Q15.546875,1,12.265625,-3.5625Q9,-8.140625,9,-18.28125L9,-62L3,-62L3,-74L9,-74L9,-86Q15.640625,-90.453125,22,-96L22,-74L31,-74L31,-62L22,-62Z"
-          android:fillColor="#FFFFFF"/>
+        android:name="t_logo"
+        android:fillColor="#FFFFFF"/>
     </group>
   </group>
 </vector>

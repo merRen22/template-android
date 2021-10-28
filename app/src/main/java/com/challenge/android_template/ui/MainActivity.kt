@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.challenge.android_template.base.viewmodel.SystemViewModel
 import com.challenge.android_template.baseui.BaseTheme
 import com.google.accompanist.insets.ProvideWindowInsets
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    installSplashScreen()
     setContent {
       BaseTheme(
         systemViewModel.isNightMode(),
