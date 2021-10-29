@@ -60,6 +60,11 @@ List of issue related to version of dependecies and limitations
 - [kmm template](https://github.com/jittya/KMMT) for buildSrc handling
 - [libraries](https://proandroiddev.com/avoid-repetitive-dependency-declarations-with-gradle-kotlin-dsl-97c904704727) for sharing dependencies between modules
 
+## Testing 🧪
+
+- data:api -> network client test
+...
+
 ## Author
 
 * **Renato Mercado**
