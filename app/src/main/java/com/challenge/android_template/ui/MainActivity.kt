@@ -3,6 +3,8 @@ package com.challenge.android_template.ui
 import android.graphics.drawable.TransitionDrawable
 import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.activity.viewModels
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -146,17 +148,13 @@ fun StartScreen() {
               fontWeight = FontWeight.Bold
             )
             Box(
-              modifier = Modifier
-                .height(
+              modifier = Modifier.height(
                   dimensionResource(R.dimen.start_content_size)
-                )
-                .width(
+                ).width(
                   dimensionResource(R.dimen.start_content_size)
-                )
-                .clip(
+                ).clip(
                   RoundedCornerShape(8.dp)
-                )
-                .background(color = Color.White)
+                ).background(color = Color.White)
             )
           }
         }

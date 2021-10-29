@@ -45,7 +45,7 @@ class NetworkModule {
   fun provideRetrofit(okHttpClient: OkHttpClient, converterFactory: Converter.Factory): Retrofit {
     return Retrofit.Builder()
       .client(okHttpClient)
-      .baseUrl("https://mimochallenge.azurewebsites.net/api/")
+      .baseUrl("https://gist.githubusercontent.com/merRen22/")
       .addConverterFactory(converterFactory)
       .build()
   }

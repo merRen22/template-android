@@ -88,6 +88,6 @@ limitations under the License.
 
 - add a widget that shows a different quote each day to the the user making use of the new API for android 12 also this needs to use the preview view for widgets and the device template
 - also widgets can interact with audio should I added ?
-- customize splash screen show by android
+- set up data classes
 
 
