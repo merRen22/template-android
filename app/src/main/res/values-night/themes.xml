@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <style name="Theme.MySplash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    <item name="android:windowBackground">@drawable/splash_background_night</item>
+    <item name="android:windowBackground">@drawable/splash_transition_night</item>
+  </style>
+
+  <style name="Theme.AnimatedSplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorPrimary">@color/background_night</item>
+    <item name="colorOnPrimary">@color/accent</item>
+    <item name="android:statusBarColor" tools:targetApi="l">@color/accent</item>
   </style>
 
 </resources>
