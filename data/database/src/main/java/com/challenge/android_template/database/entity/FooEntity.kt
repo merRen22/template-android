@@ -3,6 +3,7 @@ package com.challenge.android_template.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.challenge.android_template.model.Foo
+import org.jetbrains.annotations.TestOnly
 
 
 @Entity(tableName = "foo")
@@ -24,6 +25,15 @@ class FooEntity(
         name = foo.name
       )
     }
+
+    @TestOnly
+    fun createFooEntity(
+      id: Int = -1,
+      name: String = "dungus"
+    ) = FooEntity(
+      id = id,
+      name = name
+    )
 
   }
 }

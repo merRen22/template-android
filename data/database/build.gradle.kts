@@ -42,7 +42,8 @@ android {
 dependencies {
 
   implementShared()
-  
+  implementTest()
+
   // module
   api(project(":model"))
 
