@@ -41,6 +41,7 @@ android {
 dependencies {
 
   implementShared()
+  implementTest()
 
   api(project(":model"))
 
@@ -48,4 +49,6 @@ dependencies {
   api(Dependencies.Network.retrofitConverter)
   api(Dependencies.Network.serializationJson)
   api(Dependencies.Network.okhttp)
+
+  testImplementation(Dependencies.Network.mockWebServer)
 }
