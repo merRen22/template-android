@@ -19,7 +19,7 @@ class FooRepository @Inject constructor(
    * Generic method to interact with the local DB
    */
   suspend fun insert(foo: Foo) {
-    fooDb.insert(foo)
+    return fooDb.insert(foo)
   }
 
   /**

@@ -65,6 +65,11 @@ List of issue related to version of dependecies and limitations
 - data:api -> network client test
 ...
 
+### Tagging ( AndroidJUnit4 )
+
+in case of unit test remember to use the tag @SmallTest
+for integrated test @MediumTest and for UI test @LargeTest
+
 ## Author
 
 * **Renato Mercado**

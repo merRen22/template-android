@@ -123,8 +123,9 @@ class Dependencies {
 
     const val testCore = "androidx.test:core:1.3.0"
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
-    const val extJunitKtx = "androidx.test.ext:junit-ktx:1.1.2"
+    const val extJunitKtx = "androidx.test.ext:junit-ktx:1.1.3"
     const val extTruth = "androidx.test.ext:truth:1.3.0"
+    const val composeTest = "androidx.compose.ui:ui-test-junit4:1.0.4"
     const val banchmark = "androidx.benchmark:benchmark-junit4:1.0.0"
   }
 

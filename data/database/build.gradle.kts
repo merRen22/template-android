@@ -43,6 +43,7 @@ dependencies {
 
   implementShared()
   implementTest()
+  implementAndroidTest()
 
   // module
   api(project(":model"))

@@ -1,37 +1,51 @@
 package com.challenge.android_template.database
 
+import android.content.Context
+import androidx.room.Room
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.challenge.android_template.database.dao.FooDao
-import com.challenge.android_template.database.entity.FooEntity.Companion.createFooEntity
+import com.challenge.android_template.database.entity.FooEntity
+import com.challenge.android_template.model.Foo
 import com.google.common.truth.Truth.assertThat
-import io.mockk.MockKAnnotations
-import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
+import java.io.IOException
 
-
-@RunWith(JUnit4::class)
+@RunWith(AndroidJUnit4::class)
 class FooDbClientTest {
-
-  private lateinit var client: FooDbClient
-
-  @MockK
-  private lateinit var mockFooDao: FooDao
+  private lateinit var fooDao: FooDao
+  private lateinit var db: AppDatabase
 
   @Before
-  fun setup() {
-    MockKAnnotations.init(this)
+  fun createDb() {
+    val context = ApplicationProvider.getApplicationContext<Context>()
+    db = Room.inMemoryDatabaseBuilder(
+      context, AppDatabase::class.java
+    ).build()
+    fooDao = db.fooDao
+  }
 
-    client = FooDbClient(mockFooDao)
+  @After
+  @Throws(IOException::class)
+  fun closeDb() {
+    db.close()
   }
 
   @Test
-  fun `get all foos`() {
+  @Throws(Exception::class)
+  fun `insert and get all foos`() {
     runBlocking {
-
+      val foo: Foo = Foo(1, "Shinji")
+      fooDao.insert(
+        FooEntity.fromModel(foo)
+      )
+      val byName = fooDao.getAll()
+      assertThat(byName).contains(foo)
+      /*
       coEvery { mockFooDao.getAll() } returns listOf(
         createFooEntity(1, "Shinji"),
         createFooEntity(2, "Azuka"),
@@ -47,7 +61,7 @@ class FooDbClientTest {
       assertThat(foos[1].name).isEqualTo("Azuka")
       assertThat(foos[2].id).isEqualTo(3)
       assertThat(foos[2].name).isEqualTo("Rei")
+       */
     }
   }
-
 }

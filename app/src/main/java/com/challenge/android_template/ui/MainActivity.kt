@@ -3,8 +3,6 @@ package com.challenge.android_template.ui
 import android.graphics.drawable.TransitionDrawable
 import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.ViewTreeObserver
 import androidx.activity.viewModels
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity

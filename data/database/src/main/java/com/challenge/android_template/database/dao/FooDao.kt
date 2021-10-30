@@ -10,7 +10,7 @@ import com.challenge.android_template.database.entity.FooEntity
 abstract class FooDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  abstract suspend fun insert(repositoryEntity: FooEntity)
+  abstract suspend fun insert(fooEntity: FooEntity)
 
   @Query("SELECT * FROM foo")
   abstract suspend fun getAll(): List<FooEntity>

@@ -72,7 +72,7 @@ dependencies {
   implementShared()
   implementCompose()
   implementTest()
-  implementAndroidTest()
+  //implementAndroidTest()
 
   // module
   implementation(project(":base"))

@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 class FooDbClient(private val fooDao: FooDao) : FooDb {
 
   override suspend fun insert(foo: Foo) {
-    withContext(IO) {
+    return withContext(IO) {
       fooDao.insert(FooEntity.fromModel(foo))
     }
   }
