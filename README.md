@@ -63,6 +63,7 @@ List of issue related to version of dependecies and limitations
 ## Testing 🧪
 
 - data:api -> network client test
+- data:database -> read and write instrumented test
 ...
 
 ### Tagging ( AndroidJUnit4 )
