@@ -1,5 +1,3 @@
-import java.awt.SplashScreen
-
 class Dependencies {
 
   object DeSugar {
