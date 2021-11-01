@@ -34,6 +34,11 @@ android {
     // https://developer.android.com/studio/write/java8-support
     isCoreLibraryDesugaringEnabled = true
   }
+  packagingOptions {
+    exclude("META-INF/*")
+    exclude("META-INF/AL2.0")
+    exclude("META-INF/LGPL2.1")
+  }
   kotlinOptions {
     jvmTarget = "1.8"
   }

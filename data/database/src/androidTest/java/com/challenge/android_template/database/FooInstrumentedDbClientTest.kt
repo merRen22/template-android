@@ -1,5 +1,6 @@
 package com.challenge.android_template.database
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -12,6 +13,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
@@ -30,6 +32,9 @@ class FooInstrumentedDbClientTest {
   private lateinit var fooDao: FooDao
   private lateinit var db: AppDatabase
 
+  @get:Rule
+  var instantTaskExecutorRule = InstantTaskExecutorRule()
+
   @Before
   fun setup() {
     db = Room.inMemoryDatabaseBuilder(
@@ -47,11 +52,13 @@ class FooInstrumentedDbClientTest {
 
   @Test
   @Throws(Exception::class)
-  fun `insert and get all foos`() = runBlockingTest {
-    val foo = Foo(1, "Shinji")
-    fooDao.insert(FooEntity.fromModel(foo))
-    val byName = fooDao.getAll()
-    assertThat(byName).contains(foo)
+  fun readWriteFoos() = runBlockingTest {
+    val dummyFoo = FooEntity.fromModel(
+      Foo(1, "Shinji")
+    )
+    fooDao.insert(dummyFoo)
+    val foos = fooDao.getAll()
+    assertThat(foos.first().name).isEqualTo("Shinji")
   }
 
 }
