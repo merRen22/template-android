@@ -1,104 +1,170 @@
-package com.challenge.android_template.about
+package com.challenge.android_template.feed
 
-import androidx.compose.animation.animateColor
+import androidx.compose.foundation.Image
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.challenge.android_template.baseui.GenericToolbar
-import com.challenge.android_template.baseui.blue700
-import com.challenge.android_template.baseui.lightGreen700
-import com.challenge.android_template.baseui.openUrl
-import com.challenge.android_template.feed.R
-import java.util.Locale
+import com.challenge.android_template.model.Foo
 
 /**
- * About screen.
+ * Feed screen.
  */
 @Composable
-fun About(onUpPress: () -> Unit) {
+fun Feed(
+  foodViewModel: FeedViewModel
+) {
   Scaffold(
-    topBar = { GenericToolbar(onUpPress = onUpPress) },
-    content = { AboutContent() }
+    topBar = { FeedTopBar() },
+    content = { FeedFooContent() }
   )
 }
 
 @Composable
-private fun AboutContent() {
-  Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-    ContentHeader()
-    Text(
-      text = stringResource(id = R.string.about_description),
-      style = MaterialTheme.typography.body1,
-      lineHeight = 32.sp,
-      modifier = Modifier.padding(16.dp)
-    )
-    ContentCallToAction()
-  }
-}
-
-@Composable
-private fun ContentHeader() {
-  val infiniteTransition = rememberInfiniteTransition()
-  val color by infiniteTransition.animateColor(
-    initialValue = blue700,
-    targetValue = lightGreen700,
-    animationSpec = infiniteRepeatable(
-      animation = tween(durationMillis = 10_000, easing = LinearEasing),
-      repeatMode = RepeatMode.Reverse
-    )
+fun FeedTopBar() {
+  TopAppBar(
+    title = { R.string.app_name },
+    backgroundColor = MaterialTheme.colors.surface,
+    elevation = 0.dp,
   )
-
-  Box(
-    contentAlignment = Alignment.Center,
-    modifier = Modifier
-      .fillMaxWidth()
-      .height(200.dp)
-      .background(color = color)
-  ) {
-    val appName = stringResource(id = R.string.app_name).toLowerCase(Locale.getDefault())
-    Text(
-      text = appName,
-      style = MaterialTheme.typography.h1.copy(color = MaterialTheme.colors.surface)
-    )
-  }
 }
 
 @Composable
-private fun ContentCallToAction() {
-  Box(
-    contentAlignment = Alignment.Center,
-    modifier = Modifier
-      .fillMaxWidth()
-      .padding(vertical = 16.dp)
-  ) {
-    val context = LocalContext.current
-    Button(onClick = { context.openUrl(PROJECT_URL) }) {
-      Icon(
-        imageVector = Icons.Default.Person,
-        contentDescription = stringResource(id = R.string.about_cd_github)
+fun FeedFooContent(
+  foos: List<Foo>,
+  lazyListState: LazyListState,
+  onFooSelected: (Foo) -> Unit,
+  modifier: Modifier
+) {
+  LazyColumn(modifier = modifier) {
+
+    item {
+      FooHeading(
+        text = "Some random text",
+        modifier = Modifier
+          .padding(start = 16.dp)
       )
-      Spacer(modifier = Modifier.width(12.dp))
-      Text(text = stringResource(id = R.string.about_button_project))
+    }
+
+    items(foos) { foo ->
+      FooItem(
+        foo = foo,
+        onClick = onFooSelected,
+        modifier = Modifier
+          .padding(16.dp)
+          .fillMaxWidth()
+      )
+    }
+  }
+
+}
+
+@Composable
+fun FooHeading(
+  text: String,
+  modifier: Modifier = Modifier
+) {
+  Text(
+    text = text,
+    style = MaterialTheme.typography.subtitle1,
+    modifier = modifier
+  )
+}
+
+@Composable
+fun FooItem(
+  foo: Foo,
+  onClick: (Foo) -> Unit,
+  modifier: Modifier = Modifier
+) {
+  Surface(
+    modifier = Modifier.clickable(
+      enabled = true,
+      onClick = { onClick(foo) }
+    )
+  ) {
+    Row(
+      modifier = modifier,
+      horizontalArrangement = Arrangement.SpaceBetween,
+      verticalAlignment = Alignment.CenterVertically
+    ) {
+
+      FooImage(
+        modifier = Modifier.requiredSize(70.dp)
+      )
+      Spacer(modifier = Modifier.width(8.dp))
+      FooName(
+        modifier = Modifier
+          .weight(1f)
+          .padding(end = 8.dp),
+        foo = foo
+      )
+      CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+        IconButton(onClick = { /*TODO*/ }) {
+          Icon(
+            painter = painterResource(id = R.drawable.ic_baseline_more_vert_24),
+            contentDescription = "More icon"
+          )
+        }
+      }
     }
   }
 }
 
-private const val PROJECT_URL = "https://github.com/merRen22/template-android"
+@Composable
+fun FooName(
+  modifier: Modifier = Modifier,
+  foo: Foo
+) {
+  Column(modifier = modifier) {
+    Spacer(modifier = Modifier.height(2.dp))
+    Text(
+      text = foo.name,
+      style = MaterialTheme.typography.body1,
+      maxLines = 1
+    )
+    Spacer(modifier = Modifier.height(4.dp))
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+      Text(
+        text = foo.name,
+        style = MaterialTheme.typography.body2,
+      )
+    }
+  }
+}
 
+@Composable
+fun FooImage(
+  modifier: Modifier = Modifier,
+  shape: RoundedCornerShape = RoundedCornerShape(4.dp),
+  elevation: Dp = 0.dp
+) {
+  Surface(shape = shape, elevation = elevation) {
+    Image(
+      painter = rememberImagePainter(
+        data = "https://picsum.photos/200/300",
+        builder = {
+          crossfade(true)
+          error(R.drawable.ic_dog)
+          placeholder(R.drawable.ic_placeholder)
+        }
+      ),
+      contentDescription = "Foo Image",
+      modifier = modifier,
+      contentScale = ContentScale.Crop,
+      alignment = Alignment.TopCenter
+    )
+  }
+}
