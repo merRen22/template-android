@@ -65,6 +65,7 @@ List of issue related to version of dependecies and limitations
 - data:api -> network client test
 - data:database -> read and write instrumented test
 - base: -> viewmodel functions test
+- feature:feed -> viewmodel functions test
 ...
 
 ### Tagging ( AndroidJUnit4 )
