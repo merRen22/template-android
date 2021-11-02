@@ -54,6 +54,7 @@ dependencies {
   // libs
   implementShared()
   implementCompose()
+  implementTest()
 
   // module
   implementation(project(":base"))

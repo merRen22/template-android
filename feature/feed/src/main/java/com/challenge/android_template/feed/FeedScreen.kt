@@ -25,6 +25,7 @@ import com.challenge.android_template.baseui.GenericToolbar
 import com.challenge.android_template.baseui.blue700
 import com.challenge.android_template.baseui.lightGreen700
 import com.challenge.android_template.baseui.openUrl
+import com.challenge.android_template.feed.R
 import java.util.Locale
 
 /**
