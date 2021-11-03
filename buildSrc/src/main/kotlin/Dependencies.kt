@@ -107,7 +107,7 @@ class Dependencies {
   }
 
   object Image {
-    const val coil = "dev.chrisbanes.accompanist:accompanist-coil:0.6.0"
+    const val coil = "io.coil-kt:coil-compose:1.4.0"
   }
 
   object Test {
