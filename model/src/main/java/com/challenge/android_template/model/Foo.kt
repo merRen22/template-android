@@ -7,6 +7,10 @@ data class Foo(
   val name: String
 ) {
   companion object {
+    val EMPTY = Foo(
+      id = -1,
+      name = "",
+    )
     @TestOnly
     fun createFoo(
       id: Int = -1,

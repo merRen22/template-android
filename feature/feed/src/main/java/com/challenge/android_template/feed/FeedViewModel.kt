@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.challenge.android_template.repository.FooRepository
 import com.challenge.android_template.base.ErrorHandler
-import com.challenge.android_template.model.Foo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,8 +19,8 @@ class FeedViewModel @Inject constructor(
   private val errorHandler: ErrorHandler
 ) : ViewModel() {
 
-  private val mutableFooItems: MutableStateFlow<List<Foo>> = MutableStateFlow(emptyList())
-  val fooItems: StateFlow<List<Foo>> = mutableFooItems
+  private val mutableFooItems= MutableStateFlow(FeedUiState.EMPTY)
+  val fooItems: StateFlow<FeedUiState> get() = mutableFooItems
 
   /**
    * In case of makifng multile request at the same time and handleing all ther threads an errors
@@ -36,7 +35,7 @@ class FeedViewModel @Inject constructor(
         fooRepository.getAllFoos()
       }.onSuccess { foos ->
         // do stuff with a live data
-        mutableFooItems.value = foos
+        mutableFooItems.value = mutableFooItems.value.copy(foos = foos)
       }.onFailure { error ->
         errorHandler.handleError(error)
       }

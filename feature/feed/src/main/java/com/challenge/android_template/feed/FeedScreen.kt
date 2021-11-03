@@ -11,6 +11,8 @@ import androidx.compose.material.*
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -27,9 +29,19 @@ import com.challenge.android_template.model.Foo
 fun Feed(
   foodViewModel: FeedViewModel
 ) {
+  val uiState by foodViewModel.fooItems.collectAsState()
+
   Scaffold(
     topBar = { FeedTopBar() },
-    content = { FeedFooContent() }
+    content = {
+      FeedFooContent(
+        feedUiState = uiState,
+        onFooSelected = {
+
+        },
+        modifier = Modifier.fillMaxSize(),
+      )
+    }
   )
 }
 
@@ -44,8 +56,7 @@ fun FeedTopBar() {
 
 @Composable
 fun FeedFooContent(
-  foos: List<Foo>,
-  lazyListState: LazyListState,
+  feedUiState: FeedUiState,
   onFooSelected: (Foo) -> Unit,
   modifier: Modifier
 ) {
@@ -59,15 +70,29 @@ fun FeedFooContent(
       )
     }
 
-    items(foos) { foo ->
-      FooItem(
-        foo = foo,
-        onClick = onFooSelected,
-        modifier = Modifier
-          .padding(16.dp)
-          .fillMaxWidth()
-      )
+    if (feedUiState.isLoading) {
+      item {
+        Column(
+          horizontalAlignment = Alignment.CenterHorizontally,
+          modifier = Modifier.fillMaxWidth()
+        ) {
+          CircularProgressIndicator(
+            modifier = Modifier.padding(top = 16.dp)
+          )
+        }
+      }
+    } else {
+      items(feedUiState.foos) { foo ->
+        FooItem(
+          foo = foo,
+          onClick = onFooSelected,
+          modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth()
+        )
+      }
     }
+
   }
 
 }
@@ -158,8 +183,8 @@ fun FooImage(
         data = "https://picsum.photos/200/300",
         builder = {
           crossfade(true)
-          error(R.drawable.ic_dog)
-          placeholder(R.drawable.ic_placeholder)
+          error(R.drawable.ic_launcher_foreground)
+          placeholder(R.drawable.ic_launcher_foreground)
         }
       ),
       contentDescription = "Foo Image",
