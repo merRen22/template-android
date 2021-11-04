@@ -54,7 +54,7 @@ class Dependencies {
 
   object Navigation {
     const val navCompose =
-      "com.google.accompanist:accompanist-navigation-animation:${Versions.Dependencies.Navigation}"
+      "androidx.navigation:navigation-compose:${Versions.Dependencies.Navigation_compose}"
   }
 
 
@@ -124,6 +124,7 @@ class Dependencies {
     const val extJunitKtx = "androidx.test.ext:junit-ktx:1.1.3"
     const val extTruth = "androidx.test.ext:truth:1.3.0"
     const val composeTest = "androidx.compose.ui:ui-test-junit4:1.0.4"
+    const val navigation = "androidx.navigation:navigation-testing:${Versions.Dependencies.Navigation_android_version}"
     const val banchmark = "androidx.benchmark:benchmark-junit4:1.0.0"
   }
 

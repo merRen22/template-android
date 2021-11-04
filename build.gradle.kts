@@ -6,7 +6,6 @@ buildscript {
     dependencies {
         classpath(Plugins.pluginBuildGradle)
         classpath(Plugins.pluginKotlinGradle)
-        classpath(Plugins.pluginSafeArgs)
         classpath(Plugins.pluginDaggerHilt)
         classpath(Plugins.pluginKotlinSerialization)
     }

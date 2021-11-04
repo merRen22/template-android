@@ -31,13 +31,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
+import com.challenge.android_template.baseui.navigation.NavigationManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 @ExperimentalAnimationApi
 class MainActivity : AppCompatActivity() {
+
+  @Inject
+  lateinit var navigationManager: NavigationManager
 
   private val systemViewModel: SystemViewModel by viewModels()
 

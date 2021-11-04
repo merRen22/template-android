@@ -101,7 +101,5 @@ limitations under the License.
 
 - add a widget that shows a different quote each day to the the user making use of the new API for android 12 also this needs to use the preview view for widgets and the device template
 - also widgets can interact with audio should I added ?
-- set up data module with test
-- automate test when data module complete
-
-
+- automate test when all module test complete
+- rearrange modules as in minimise app https://github.com/hitherejoe/minimise ( such as design module )

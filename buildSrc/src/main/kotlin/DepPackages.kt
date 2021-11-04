@@ -48,5 +48,6 @@ fun DependencyHandler.implementAndroidTest() {
   add("androidTestImplementation", Dependencies.AndroidTest.composeTest)
   add("androidTestImplementation", Dependencies.DependencyInjection.daggerHiltTesting)
   add("androidTestImplementation", Dependencies.Test.archCore)
+  add("androidTestImplementation", Dependencies.AndroidTest.navigation)
   add("kaptAndroidTest", Dependencies.DependencyInjection.daggerHiltCompiler)
 }
