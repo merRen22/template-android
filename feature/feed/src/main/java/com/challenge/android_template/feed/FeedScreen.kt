@@ -24,7 +24,7 @@ import com.challenge.android_template.model.Foo
  * Feed screen.
  */
 @Composable
-fun Feed(
+fun FeedUI(
   foodViewModel: FeedViewModel
 ) {
   val uiState by foodViewModel.fooItems.collectAsState()

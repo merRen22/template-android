@@ -19,13 +19,22 @@ object FeedDirections {
    *   )
    */
 
-  // you copuld also add params to this roo to set args
+  // you could also add params to this roo to set args
   val root = object : NavigationCommand {
 
     // here you would put the argument list
     override val arguments = emptyList<NamedNavArgument>()
 
-    override val destination = "detail"
+    override val destination = "connect"
+
+  }
+
+  val feed = object : NavigationCommand {
+
+    // here you would put the argument list
+    override val arguments = emptyList<NamedNavArgument>()
+
+    override val destination = "feed"
 
   }
 

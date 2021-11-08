@@ -67,6 +67,7 @@ dependencies {
   implementation(Dependencies.Compose.composeActivity)
   implementation(Dependencies.Accompanist.insets)
   implementation(Dependencies.Androidx.SplashScreen)
+  implementation(Dependencies.Navigation.hiltNavigation)
 
   // libs
   implementShared()
@@ -78,6 +79,7 @@ dependencies {
   implementation(project(":base"))
   implementation(project(":baseUI"))
   implementation(project(":feature:about"))
+  implementation(project(":feature:feed"))
   //implementation(project(":feature:search"))
   //implementation(project(":feature:pin"))
 }

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
  * https://medium.com/google-developer-experts/modular-navigation-with-jetpack-compose-fda9f6b2bef7
  */
 
-object NavigationManager {
+class NavigationManager {
 
   var commands = MutableStateFlow(Default)
 

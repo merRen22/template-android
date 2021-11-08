@@ -55,6 +55,7 @@ class Dependencies {
   object Navigation {
     const val navCompose =
       "androidx.navigation:navigation-compose:${Versions.Dependencies.Navigation_compose}"
+    const val hiltNavigation = "androidx.hilt:hilt-navigation-compose:${Versions.Dependencies.Android_Hilt}"
   }
 
 
