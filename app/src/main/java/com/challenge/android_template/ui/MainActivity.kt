@@ -1,5 +1,6 @@
 package com.challenge.android_template.ui
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.TransitionDrawable
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.animation.*
 import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.compose.runtime.*
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.*
 import com.challenge.android_template.baseui.BaseTheme
@@ -20,6 +22,7 @@ import com.challenge.android_template.baseui.navigation.FeedDirections
 import com.challenge.android_template.baseui.navigation.NavigationManager
 import com.challenge.android_template.baseui.utilScreens.GenericErrorScreen
 import com.challenge.android_template.feed.FeedUI
+import com.challenge.android_template.feed.FeedViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -56,12 +59,15 @@ class MainActivity : AppCompatActivity() {
         )
         // no trigger for when animations end so coroutine is used
         lifecycleScope.launch {
-          delay(splashFadeDurationMillis.toLong()
-            + 200)
+          delay(
+            splashFadeDurationMillis.toLong()
+              + 200
+          )
           android12AnimationAlreadyShow()
         }
+      } else {
+        android12AnimationAlreadyShow()
       }
-      else { android12AnimationAlreadyShow() }
     }
   }
 
@@ -79,7 +85,8 @@ class MainActivity : AppCompatActivity() {
     }
   }
 
-  private fun android12AnimationAlreadyShow(){
+  @SuppressLint("UnrememberedGetBackStackEntry")
+  private fun android12AnimationAlreadyShow() {
     setTheme(R.style.Theme_AnimatedSplashScreen)
     setContent {
       BaseTheme {
@@ -89,29 +96,7 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(command.destination)
           }
         }
-        NavHost(
-          navController = navController,
-          startDestination  = FeedDirections.root.destination
-        ) {
-          navigation(
-            startDestination = FeedDirections.feed.destination,
-            route = FeedDirections.root.destination
-          ) {
-            composable(FeedDirections.feed.destination) {
-              FeedUI(
-                /*
-                navController.hiltNavGraphViewModel(
-                  route = FeedDirections.feed.destination
-                )
-                 */
-                navController.hiltNavGraphViewModel(
-                  route = FeedDirections.feed.destination
-                )
-              )
-            }
-          }
-        }
-        //GenericErrorScreen("something happen 😢")
+        Navigation(navController = navController)
       }
     }
   }
